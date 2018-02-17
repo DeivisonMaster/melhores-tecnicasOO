@@ -25,7 +25,7 @@ public class BalancoEmpresa {
 			pagamento.setCnpjPagador(cnpjPagador);
 			pagamento.setValor(valorPagamento);
 			
-			divida.registra(pagamento);
+			divida.getPagamentos().registra(pagamento, divida);
 		} else {
 			System.out.println("Não há dividas registradas neste CNPJ");
 		}
@@ -40,7 +40,7 @@ public class BalancoEmpresa {
 		if(divida != null){
 			System.out.println(
 					"Nome Credor: " + divida.getNomeCredor() + "\n"
-					+ "CNPJ Credor: " + divida.getCnpjCredor() + "\n"
+					+ "CNPJ Credor: " + divida.getCnpjCredor().getCnpj() + "\n"
 					+ "Total Divida: " + divida.getTotalDivida());
 			
 			verificaPagamentoDivida(divida);
@@ -50,7 +50,7 @@ public class BalancoEmpresa {
 	}
 	
 	private void verificaPagamentoDivida(Divida divida){
-		if(divida.getValorPago() >= divida.getTotalDivida()){
+		if(divida.getPagamentos().getValorPago() >= divida.getTotalDivida()){
 			System.out.println("Pagamento efetuado");
 		}else{
 			System.out.println("Pagamento não efetuado");
