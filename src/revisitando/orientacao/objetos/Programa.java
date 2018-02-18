@@ -28,11 +28,12 @@ public class Programa {
 		
 		System.out.println("---------------------------------------------------------------");
 		
-		// PESQUISA PAGAMENTOS
-		List<Pagamento> pagamentos = divida1.getPagamentos();
 		
-		for (Pagamento pagamento : pagamentos) {
-			System.out.println("Nome Pagador: " + pagamento.getNomePagador());
-		}
+		// PESQUISA PAGAMENTOS
+//		List<Pagamento> pagamentos = divida1.getPagamentos();
+//		
+//		for (Pagamento pagamento : pagamentos) {
+//			System.out.println("Nome Pagador: " + pagamento.getNomePagador());
+//		}
 	}
 }

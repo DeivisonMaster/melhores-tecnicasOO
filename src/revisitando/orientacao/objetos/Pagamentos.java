@@ -2,12 +2,18 @@ package revisitando.orientacao.objetos;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
-public class Pagamentos extends ArrayList<Pagamento>{
+public class Pagamentos {
 	private static final long serialVersionUID = 1L;
 	private double valorPago;
+	private List<Pagamento> pagamentos;
 	
 	
+	public Pagamentos() {
+		this.pagamentos = new ArrayList<Pagamento>();
+	}
+
 	private void paga(double valor, Divida divida) {
 		if (valor >= divida.getTotalDivida()) {
 			this.valorPago = valor;
@@ -17,7 +23,7 @@ public class Pagamentos extends ArrayList<Pagamento>{
 	}
 
 	public void registra(Pagamento pagamento, Divida divida) {
-		this.add(pagamento);
+		this.pagamentos.add(pagamento);
 		paga(pagamento.getValor(), divida);
 	}
 	
@@ -27,7 +33,7 @@ public class Pagamentos extends ArrayList<Pagamento>{
 	
 	public ArrayList<Pagamento>	pagamentosAntesDe(Calendar data){
 		ArrayList<Pagamento> pagamentosFiltrados = new ArrayList<Pagamento>();
-		for (Pagamento pagamento : this) {
+		for (Pagamento pagamento : this.pagamentos) {
 			if(pagamento.getData().before(data)){
 				pagamentosFiltrados.add(pagamento);
 			}
@@ -37,7 +43,7 @@ public class Pagamentos extends ArrayList<Pagamento>{
 	
 	public ArrayList<Pagamento>	pagamentosComValorMaiorQue(double valorMinimo){
 		ArrayList<Pagamento> pagamentosFiltrados = new ArrayList<Pagamento>();
-		for (Pagamento pagamento : this) {
+		for (Pagamento pagamento : this.pagamentos) {
 			if(pagamento.getValor() > valorMinimo){
 				pagamentosFiltrados.add(pagamento);
 			}
@@ -47,11 +53,12 @@ public class Pagamentos extends ArrayList<Pagamento>{
 	
 	public ArrayList<Pagamento>	pagamentosDo(String cnpjPagador){
 		ArrayList<Pagamento> pagamentosFiltrados = new ArrayList<Pagamento>();
-		for (Pagamento pagamento : this) {
+		for (Pagamento pagamento : this.pagamentos) {
 			if(pagamento.getCnpjPagador().equals(cnpjPagador)){
 				pagamentosFiltrados.add(pagamento);
 			}
 		}
 		return pagamentosFiltrados;
 	}
+	
 }
