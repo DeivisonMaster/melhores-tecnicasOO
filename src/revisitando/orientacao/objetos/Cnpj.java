@@ -33,4 +33,8 @@ public class Cnpj {
 		this.cnpj = cnpjCredor;
 	}
 
+	@Override
+	public String toString() {
+		return this.cnpj;
+	}
 }

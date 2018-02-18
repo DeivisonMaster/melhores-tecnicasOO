@@ -8,6 +8,6 @@ public class GerenciadorDividas {
 		pagamento.setCnpjPagador(cnpjPagador);
 		pagamento.setValor(valor);
 		
-		divida.getPagamentos().registra(pagamento, divida);
+		divida.registra(pagamento, divida);
 	}
 }

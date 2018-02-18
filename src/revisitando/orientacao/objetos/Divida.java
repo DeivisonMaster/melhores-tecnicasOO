@@ -6,7 +6,6 @@ public class Divida {
 	private double totalDivida;
 	private Pagamentos pagamentos;
 
-	
 	public Divida() {
 		this.cnpjCredor = new Cnpj();
 		this.pagamentos = new Pagamentos();
@@ -34,6 +33,22 @@ public class Divida {
 
 	public Cnpj getCnpjCredor() {
 		return cnpjCredor;
+	}
+
+	// Diminuindo o acoplamento da classe BalancoEmpresa e GerenciadorDeDividas
+	public void registra(Pagamento pagamento, Divida divida) {
+		this.pagamentos.registra(pagamento, divida);
+	}
+
+	public void pesquisaDividaPorChave() {
+		System.out.println(
+					    "Nome Credor: " + this.nomeCredor + "\n"
+						+ "CNPJ Credor: "+ this.cnpjCredor.getCnpj() + "\n" 
+					    + "Total Divida: " + this.totalDivida);
+	}
+
+	public double getValorPago() {
+		return this.pagamentos.getValorPago();
 	}
 
 }
