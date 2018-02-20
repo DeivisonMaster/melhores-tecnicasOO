@@ -4,20 +4,27 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BalancoEmpresa {
-	private Map<Documento, Divida> dividas = new HashMap<Documento, Divida>();
+//	private Map<Documento, Divida> dividas = new HashMap<Documento, Divida>();
+	private ArmazenadorDividas armazenadorDividas;
+	
+
+	public BalancoEmpresa(BancoDeDados armazenadorDividas) {
+		this.armazenadorDividas = armazenadorDividas;
+	}
 
 	public void registraDivida(Divida divida) {
-		dividas.put(divida.getDocumentoCredor(), divida);
+		armazenadorDividas.salva(divida);
 	}
 
 	public void pagaDivida(Documento documentoCredor, Pagamento pagamento) {
-		Divida divida = dividas.get(documentoCredor);
+		Divida divida = armazenadorDividas.carrega(documentoCredor);
 
 		if (divida != null) {
 			divida.registra(pagamento, divida);
 		} else {
 			System.out.println("Não há dividas registradas neste Documento");
 		}
+		armazenadorDividas.salva(divida);
 	}
 
 	/*
@@ -25,7 +32,7 @@ public class BalancoEmpresa {
 	 * BalancoEmpresa
 	 */
 	public void pesquisaDividaPorChave(Documento documentoCredor) {
-		Divida divida = dividas.get(documentoCredor);
+		Divida divida = armazenadorDividas.carrega(documentoCredor);
 		if (divida != null) {
 			divida.pesquisaDividaPorChave();
 			verificaPagamentoEfetuadoDivida(divida);
@@ -45,9 +52,9 @@ public class BalancoEmpresa {
 		}
 	}
 
-	public Map<Documento, Divida> getDividas() {
-		return dividas;
-	}
+//	public Map<Documento, Divida> getDividas() {
+//		return dividas;
+//	}
 
 	
 }

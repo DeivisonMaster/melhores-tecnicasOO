@@ -9,7 +9,9 @@ public class Programa {
 		Divida divida1, divida2;
 		RelatorioDeDivida relatorioDivida;
 		Documento cnpj, cpf;
-		BalancoEmpresa balanco = new BalancoEmpresa();
+		BancoDeDados bd = new BancoDeDados("localhost", "adm", "123");
+		ArmazenadorDividas arquivo = new Arquivo();
+		BalancoEmpresa balanco = new BalancoEmpresa(bd);
 		Pagamento pagamento;
 		
 		// REGISTRA DIVIDA
@@ -26,6 +28,10 @@ public class Programa {
 		pagamento.setValor(990.0);
 		balanco.registraDivida(divida1);
 		balanco.pagaDivida(cnpj, pagamento);
+		
+		// SALVA A DIVIDA EM ALGUM LOCAL
+		bd.salva(divida1);
+		arquivo.salva(divida1);
 		
 		
 //		divida2 = new Divida();
