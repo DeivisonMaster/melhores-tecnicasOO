@@ -39,5 +39,11 @@ public class Pagamento {
 	public void setData(Calendar data) {
 		this.data = data;
 	}
+
+	public void registra(Pagamento pagamento) {
+		pagamento.setNomePagador(pagamento.getNomePagador());
+		pagamento.setCnpjPagador(pagamento.getCnpjPagador());
+		pagamento.setValor(pagamento.getValor());
+	}
 	
 }

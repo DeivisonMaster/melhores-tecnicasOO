@@ -8,10 +8,12 @@ public class Pagamentos {
 	private static final long serialVersionUID = 1L;
 	private double valorPago;
 	private List<Pagamento> pagamentos;
+	private Pagamento	pagamento;
 	
 	
 	public Pagamentos() {
 		this.pagamentos = new ArrayList<Pagamento>();
+		this.pagamento = new Pagamento();
 	}
 
 	private void paga(double valor, Divida divida) {
@@ -23,6 +25,8 @@ public class Pagamentos {
 	}
 
 	public void registra(Pagamento pagamento, Divida divida) {
+		pagamento.registra(pagamento);
+		
 		this.pagamentos.add(pagamento);
 		paga(pagamento.getValor(), divida);
 	}

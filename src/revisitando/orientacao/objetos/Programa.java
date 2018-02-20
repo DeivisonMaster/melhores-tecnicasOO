@@ -7,16 +7,25 @@ import java.util.Locale;
 public class Programa {
 	public static void main(String[] args) {
 		Divida divida1, divida2;
-		BalancoEmpresa balanco = new BalancoEmpresa();
 		RelatorioDeDivida relatorioDivida;
+		Documento cnpj, cpf;
+		BalancoEmpresa balanco = new BalancoEmpresa();
+		Pagamento pagamento;
 		
 		// REGISTRA DIVIDA
 		divida1 = new Divida();
 		divida1.setNomeCredor("carlos");
-		divida1.getCnpjCredor().setCnpj("222.000.555/0000-1");
+		cnpj = new Cnpj("222.111.555/0000-1");
+		cpf  = new Cpf("032.045.681.13");
+		divida1.setDocumentoCredor(cpf);
 		divida1.setTotalDivida(100.0);
-		balanco.registraDivida(divida1.getCnpjCredor().getCnpj(), divida1);
-		balanco.pagaDivida(divida1.getCnpjCredor().getCnpj(), 990.0, "Andre", "333.000.222/0000-1");
+		
+		pagamento = new Pagamento();
+		pagamento.setNomePagador("Andre");
+		pagamento.setCnpjPagador("333.000.222/0000-1");
+		pagamento.setValor(990.0);
+		balanco.registraDivida(divida1);
+		balanco.pagaDivida(cnpj, pagamento);
 		
 		
 //		divida2 = new Divida();
@@ -27,7 +36,7 @@ public class Programa {
 //		balanco.pagaDivida(divida2.getCnpjCredor().getCnpj(), 200, "Kátia", "333.000.222/0000-1");
 		
 		// PESQUISA UMA DIVIDA
-		balanco.pesquisaDividaPorChave(divida1.getCnpjCredor().getCnpj());
+		balanco.pesquisaDividaPorChave(cnpj);
 		
 		System.out.println("---------------------------------------------------------------");
 		

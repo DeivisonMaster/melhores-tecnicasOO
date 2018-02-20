@@ -2,12 +2,11 @@ package revisitando.orientacao.objetos;
 
 public class Divida {
 	private String nomeCredor;
-	private Cnpj cnpjCredor;
+	private Documento documentoCredor;
 	private double totalDivida;
 	private Pagamentos pagamentos;
 
 	public Divida() {
-		this.cnpjCredor = new Cnpj();
 		this.pagamentos = new Pagamentos();
 	}
 
@@ -31,8 +30,12 @@ public class Divida {
 		this.nomeCredor = credor;
 	}
 
-	public Cnpj getCnpjCredor() {
-		return cnpjCredor;
+	public Documento getDocumentoCredor() {
+		return documentoCredor;
+	}
+
+	public void setDocumentoCredor(Documento documentoCredor) {
+		this.documentoCredor = documentoCredor;
 	}
 
 	// Diminuindo o acoplamento da classe BalancoEmpresa e GerenciadorDeDividas
@@ -41,10 +44,8 @@ public class Divida {
 	}
 
 	public void pesquisaDividaPorChave() {
-		System.out.println(
-					    "Nome Credor: " + this.nomeCredor + "\n"
-						+ "CNPJ Credor: "+ this.cnpjCredor.getCnpj() + "\n" 
-					    + "Total Divida: " + this.totalDivida);
+		System.out.println("Nome Credor: " + this.nomeCredor + "\n" + "CNPJ Credor: " + this.documentoCredor.getValor()
+				+ "\n" + "Total Divida: " + this.totalDivida);
 	}
 
 	public double getValorPago() {

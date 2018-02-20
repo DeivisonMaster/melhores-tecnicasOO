@@ -9,5 +9,6 @@ public class TestaPagamentos {
 		pag1.setValor(105);
 		pag2.setValor(25);
 		
+		
 	}
 }

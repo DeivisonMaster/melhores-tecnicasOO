@@ -1,10 +1,16 @@
 package revisitando.orientacao.objetos;
 
-public class Cnpj {
-	private String cnpj;
+public class Cnpj implements Documento {
+	private String valor;
 
+	public Cnpj(String cnpj){
+		this.valor = cnpj;
+	}
 	
-	public boolean cnpjValido(){
+	public Cnpj(){
+	}
+	
+	public boolean isValido(){
 		return primeiroDigitoVerificadorDoCnpj() == primeiroDigitoCorretoParaCnpj()
 				&& segundoDigitoVerificadorDoCnpj() == segundoDigitoCorretoParaCnpj();
 	}
@@ -25,16 +31,17 @@ public class Cnpj {
 		return 0;
 	}
 	
-	public String getCnpj() {
-		return cnpj;
+	public String getValor() {
+		return valor;
 	}
 
-	public void setCnpj(String cnpjCredor) {
-		this.cnpj = cnpjCredor;
+	public void setValor(String cnpjCredor) {
+		this.valor = cnpjCredor;
 	}
 
 	@Override
 	public String toString() {
-		return this.cnpj;
+		return this.valor;
 	}
+
 }
