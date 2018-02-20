@@ -8,7 +8,7 @@ public class BalancoEmpresa {
 	private ArmazenadorDividas armazenadorDividas;
 	
 
-	public BalancoEmpresa(BancoDeDados armazenadorDividas) {
+	public BalancoEmpresa(ArmazenadorDividas armazenadorDividas) {
 		this.armazenadorDividas = armazenadorDividas;
 	}
 
